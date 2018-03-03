@@ -1,0 +1,65 @@
+<html>
+  <head>
+    <title>Nimil's Utility</title>
+    <link rel="stylesheet" href="css/electron_tut.css">
+    <script src="scripts/systeminfo.js"></script>
+  </head>
+  <body>
+    <div class="summary">
+      <div class="systemInfo">
+        <div class="title">System Info</div>
+        <div class="cpuLoad">
+          <div class="cpuLoadTitle">Free Memory</div>
+          <div id="free" class="pad10"></div>
+          <div class="cpuLoadTitle">Total Memory</div>
+          <div id="total" class="pad10"></div>
+          <div class="cpuLoadTitle">Uptime</div>
+          <div id="uptime" class="pad10"></div>
+          <div class="cpuLoadTitle">CPUs</div>
+          <div id="cpus" class="pad10"></div>
+        </div>
+        <div class="systemInfo">
+
+                <div class="title">Disk Usage</div>
+                <div class="cpuLoad">
+                  <div class="cpuLoadTitle">Free</div>
+                  <div id="freeDisk" class="pad10">NA</div>
+                  <div class="cpuLoadTitle">Available</div>
+                  <div id="available" class="pad10">NA</div>
+                  <div class="cpuLoadTitle">Total</div>
+                  <div id="totalSpace" class="pad10">NA</div>
+                </div>
+        </div>
+        <div class="systemInfo">
+
+                <div class="title">Ip Addresses</div>
+                <div class="cpuLoad">
+                  <div class="cpuLoadTitle">Wireless</div>
+                  <div id="wireless" class="pad10 defaultMouse">NA</div>
+                  <div class="cpuLoadTitle">Ethernet</div>
+                  <div id="ethernet" class="pad10 defaultMouse">NA</div>
+                </div>
+        </div>
+      </div>
+    </div>
+    <script>
+    const electron = require('electron');
+    const {ipcRenderer,clipboard} = electron;
+
+    const os = require('os');
+    const systemInfo = new SystemInfo();
+    // console.log(systemInfo);
+    document.addEventListener('DOMContentLoaded',()=>{
+      ipcRenderer.send('mu:dom_loaded');
+      systemInfo.init();
+    });
+    setInterval(function () {
+      systemInfo.setMemory('free');
+    }, 3);
+
+      setInterval(function () {
+        systemInfo.setUpTimes();
+      }, 86400);
+    </script>
+  </body>
+</html>

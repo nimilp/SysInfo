@@ -1,0 +1,31 @@
+body {
+  padding: 0;
+  margin: 0;
+  background-color: rgba(255, 153, 0,.5);
+}
+.summary {
+
+  font-size: 24;
+  width: 239;
+  top:0;
+  left:0;
+  margin: 10;
+
+}
+.cpuLoad {
+  font-size: 14;
+  padding: 3px;
+  background-color: rgba(255, 214, 153,.5);
+}
+.cpuLoadTitle {
+  font-size: 14;
+  font-weight: bold;
+  padding-top: 5px;
+  /* float: left; */
+}
+.pad10 {
+  padding-left: 10;
+}
+.defaultMouse {
+  cursor: default;
+}

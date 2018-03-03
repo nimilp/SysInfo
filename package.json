@@ -1,0 +1,19 @@
+{
+  "name": "SysInfo",
+  "version": "1.0.0",
+  "description": "SysInfo capturer",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^1.8.2",
+    "electron-packager": "^11.0.1",
+    "electron-rebuild": "^1.7.3"
+  },
+  "dependencies": {
+    "diskusage": "^0.2.4"
+  }
+}
