@@ -3,6 +3,7 @@
     <title>Nimil's Utility</title>
     <link rel="stylesheet" href="css/electron_tut.css">
     <script src="scripts/systeminfo.js"></script>
+    <!-- <script src="node_modules/diskusage/index.js"></script> -->
   </head>
   <body>
     <div class="summary">
@@ -24,7 +25,7 @@
                 <div class="cpuLoad">
                   <div class="cpuLoadTitle">Free</div>
                   <div id="freeDisk" class="pad10">NA</div>
-                  <div class="cpuLoadTitle">Available</div>
+                  <div class="cpuLoadTitle">Used</div>
                   <div id="available" class="pad10">NA</div>
                   <div class="cpuLoadTitle">Total</div>
                   <div id="totalSpace" class="pad10">NA</div>
@@ -45,7 +46,7 @@
     <script>
     const electron = require('electron');
     const {ipcRenderer,clipboard} = electron;
-
+    const diskUsage = require('hdd-space');
     const os = require('os');
     const systemInfo = new SystemInfo();
     // console.log(systemInfo);

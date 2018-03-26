@@ -15,7 +15,7 @@ function createWindow() {
     x:width-250,
     y:0,
     width:250,
-    resizable:false,
+    resizable:true,
     opacity: .75,frame:true,
     maximizable:true,
     minimizable:false

@@ -1,8 +1,5 @@
 function SystemInfo(){
 
-  const diskUsage = require('diskusage');
-  const os = require('os');
-
 }
 SystemInfo.prototype.init = function(){
   SystemInfo.prototype.setMemory('free');
@@ -10,21 +7,46 @@ SystemInfo.prototype.init = function(){
   SystemInfo.prototype.setUpTimes();
   SystemInfo.prototype.setCPUs();
   SystemInfo.prototype.setUpNetwork();
+
   SystemInfo.prototype.getSystemUsage();
+  // diskUsage(function(info){
+  //   console.log('2');
+  //   console.log(info);
+  // });
 }
-SystemInfo.prototype.getSystemUsage = function(){
-    let path = os.platform() == "win32" ? "c:":"/";
-    const freeDisk = document.querySelector('freeDisk');
+SystemInfo.prototype.getSystemUsage = function(info){
+
+
     const totalDisk = document.querySelector('totalSpace');
     const avail = document.querySelector('available');
-    try{
-      let info = diskUsage.checkSync(path)
-      freeDisk.innerHTML = info.free
-      totalDisk.innerHTML = info.total;
-      avail.innerHTML = info.available;
-    } catch(error){
+  //   var output = {};
+    diskUsage(function(info){
+      const freeDisk = document.querySelector('#freeDisk'),
+       totalDisk = document.querySelector('#totalSpace');
+       let free, total, avail = (info.total.size-info.total.free),available;
+       free=SystemInfo.prototype.readableMemory({value :info.total.free, desc:"Bytes"});
+       total = SystemInfo.prototype.readableMemory({value :info.total.size, desc:"Bytes"});
+       available = SystemInfo.prototype.readableMemory({value :avail, desc:"Bytes"});
+      freeDisk.innerHTML = free.value+" "+free.desc;
+      totalDisk.innerHTML = total.value+" "+total.desc;
+      document.querySelector('#available').innerHTML = available.value+" "+available.desc;
+      console.log(info);
+  });
 
-    }
+
+  //   let path = os.platform() == "win32" ? "c:":"/";
+  //   const freeDisk = document.querySelector('freeDisk');
+  //   const totalDisk = document.querySelector('totalSpace');
+  //   const avail = document.querySelector('available');
+  //   try{
+  //     let info = diskUsage.checkSync(path)
+  //     freeDisk.innerHTML = info.free
+  //     totalDisk.innerHTML = info.total;
+  //     avail.innerHTML = info.available;
+  //     console.log(info.free);
+  //   } catch(error){
+  //     console.log(error);
+  //   }
 }
 SystemInfo.prototype.setUpNetwork = function (){
     const network = os.networkInterfaces();
@@ -37,7 +59,8 @@ SystemInfo.prototype.setUpNetwork = function (){
       if(prop === "en0" || prop === "eth0"){
       for(var i =0; i< network[prop].length;i++){
         let property = network[prop][i];
-        if(!(property.scopeid)){
+        if(!(property.scopeid) && property.scopeid !==0){
+          // console.log(JSON.stringify(property));
             switch (prop) {
               case "en0":
                 wireless.innerHTML = property.address;
@@ -130,7 +153,7 @@ SystemInfo.prototype.readableMemory = function (mem){
       return mem;
     }
 
-    mem.value=mem.value/1024;
+    mem.value=parseFloat(mem.value/1024).toFixed(2);
     switch (mem.desc) {
       case "Bytes":
         mem.desc = "KB";
