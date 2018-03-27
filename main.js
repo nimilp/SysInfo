@@ -15,9 +15,9 @@ function createWindow() {
     x:width-250,
     y:0,
     width:250,
-    resizable:true,
+    resizable:false,
     opacity: .75,frame:true,
-    maximizable:true,
+    maximizable:false,
     minimizable:false
   });
   mainWindow.loadURL(url.format({

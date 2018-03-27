@@ -2,15 +2,24 @@ body {
   padding: 0;
   margin: 0;
   background-color: rgba(255, 153, 0,.5);
+
 }
 .summary {
 
-  font-size: 24;
+  font-size: 15;
   width: 239;
   top:0;
   left:0;
   margin: 10;
 
+}
+.title {
+  box-shadow: 3px 5px 5px rgba(0,0,0,0.75);
+  padding: 5px;
+}
+.systemInfo {
+  /*box-shadow: 1px 3px 3px rgba(0,0,0,0.50);*/
+  padding-top: 15px;
 }
 .cpuLoad {
   font-size: 14;
