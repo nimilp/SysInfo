@@ -3,6 +3,7 @@ System info is a utility that can display the following info,
 1. System Info
     1. Free Memory
     1. Total memory
+    1. Number of days since the machine is on.
     1. each CPU
 1.    
     1. Free disk space
