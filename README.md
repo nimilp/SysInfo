@@ -13,4 +13,4 @@ System info is a utility that can display the following info,
     1. WiFi 
     1. Ethernet
 
-<img src="image.png" width="127" height="372"/>
+<img src="image.png" width="127" height="372" alt="App Screenshot"/>
