@@ -67,6 +67,10 @@ SystemInfo.prototype.setUpNetwork = function (){
                 wireless.addEventListener('click', function(e){
                   clipboard.writeText(property.address);
                   console.log(property.address)
+                  let myNotification = new Notification('System Info', {
+                    body: 'Wireless address '+property.address+' copied to clipboard successfully!',
+                    silent:true
+                  });
                 })
                 break;
                 case "eth0":
@@ -74,6 +78,10 @@ SystemInfo.prototype.setUpNetwork = function (){
                   ethernet.addEventListener('click', function(e){
                     clipboard.writeText(property.address);
                     console.log(property.address)
+                    let myNotification = new Notification('System Info', {
+                      body: 'Ethernet address '+property.address+' copied to clipboard successfully!',
+                      silent:true
+                    });
                   })
                   break;
               default:
