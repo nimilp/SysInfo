@@ -13,4 +13,4 @@ System info is a utility that can display the following info,
     1. WiFi 
     1. Ethernet
 
-![App](https://github.com/nimilp/SysInfo/blob/develop/image.png =208x1188)
+<img src="image.png" width="127" height="372"/>
