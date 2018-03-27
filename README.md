@@ -8,4 +8,4 @@ System info is a utility that can display the following info,
 * Total disk space
 * ip address if connected (WiFi / Ethernet)
 
-![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
+![App](https://github.com/nimilp/SysInfo/blob/develop/image.png)
