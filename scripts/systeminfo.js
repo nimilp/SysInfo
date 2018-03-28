@@ -18,13 +18,20 @@ SystemInfo.prototype.readClipboard = function(text){
     this.clipboardContents.push(text);
     const el = document.querySelector('#cc');
     let div = document.createElement('div');
-    div.addEventListener('click', function(e){
+    let divNum = document.createElement('div');
+    divNum.className="floatLeft divNum"
+    divNum.innerHTML = this.clipboardContents.length+". ";
+    let cc = document.createElement('div');
+    // div.setAttribute('id', 'cc_'+(this.clipboardContents.length));
+    cc.addEventListener('click', function(e){
         clipboard.writeText(text);
       }
     );
-    div.className =  "pad10 defaultMouse padTop5";
+    div.className =  "pad10 defaultMouse padTop5 cc";
+    div.appendChild(divNum);
+    div.appendChild(cc);
     el.appendChild(div);
-    div.innerHTML=text;
+    cc.innerHTML=text;
   }
 }
 SystemInfo.prototype.getSystemUsage = function(){

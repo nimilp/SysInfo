@@ -13,8 +13,14 @@ body {
   margin: 10;
 
 }
+.divNum {
+  padding: 3px;
+}
+.floatLeft {
+  float: left;
+}
 #cc {
-  overflow: auto;
+  overflow-y: auto;
 }
 .title {
   box-shadow: 3px 5px 5px rgba(0,0,0,0.75);
@@ -39,8 +45,11 @@ body {
   padding-left: 10;
 }
 
-.padTop10 {
+.padTop5 {
   padding-top:5px;
+}
+.cc{
+  box-shadow: 2px 5px 2px rgba(100,50,25,0.5);
 }
 .defaultMouse {
   cursor: default;
