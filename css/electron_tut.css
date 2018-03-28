@@ -48,7 +48,7 @@ body {
 .padTop5 {
   padding-top:5px;
 }
-.cc{
+.cc:hover{
   box-shadow: 2px 5px 2px rgba(100,50,25,0.5);
 }
 .defaultMouse {
