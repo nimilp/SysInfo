@@ -14,13 +14,17 @@ SystemInfo.prototype.init = function(){
 SystemInfo.prototype.readClipboard = function(text){
   console.log(this.clipboardContents);
   if(this.clipboardContents.indexOf(text) === -1){
-    console.log(text)
     this.clipboardContents.push(text);
+
     const el = document.querySelector('#cc');
+    if(this.clipboardContents.length > 10){
+      this.clipboardContents.shift();
+      el.children[0].remove();
+    }
     let div = document.createElement('div');
     let divNum = document.createElement('div');
     divNum.className="divNum floatLeft"
-    divNum.innerHTML = this.clipboardContents.length+". ";
+    divNum.innerHTML = '&#9679';
     let cc = document.createElement('div');
     // divNum.className="floatLeft";
     // div.setAttribute('id', 'cc_'+(this.clipboardContents.length));

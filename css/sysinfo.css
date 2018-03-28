@@ -19,7 +19,8 @@ body {
 .floatLeft {
   float: left;
 }
-#cc {
+.overflow {
+  height: 150px;
   overflow-y: auto;
 }
 .title {

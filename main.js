@@ -18,7 +18,7 @@ function createWindow() {
     resizable:false,
     opacity: .75,frame:true,
     maximizable:false,
-    minimizable:false
+    minimizable:true
   });
   mainWindow.loadURL(url.format({
     pathname : path.join(__dirname,'index.html'),

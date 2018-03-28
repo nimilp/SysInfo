@@ -1,7 +1,7 @@
 <html>
   <head>
     <title>Nimil's Utility</title>
-    <link rel="stylesheet" href="css/electron_tut.css">
+    <link rel="stylesheet" href="css/sysinfo.css">
     <script src="scripts/systeminfo.js"></script>
     <!-- <script src="node_modules/diskusage/index.js"></script> -->
   </head>
@@ -43,9 +43,8 @@
                 </div>
         </div>
         <div class="systemInfo">
-
                 <div class="title"><b>Clipboard</b>: <div style="background-color:red; color:white">Click the cell to copy. Cell highlights on hover.</div></div>
-                <div class="cpuLoad" id="cc">
+                <div class="cpuLoad overflow" id="cc">
                 </div>
         </div>
 
@@ -69,7 +68,9 @@
     },3000);
     setInterval(function(){
       let text = clipboard.readText();
-      systemInfo.readClipboard(text);
+      if(text && text.length <=100){
+        systemInfo.readClipboard(text);
+      }
     },3000)
 
       setInterval(function () {
