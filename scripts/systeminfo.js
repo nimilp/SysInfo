@@ -1,16 +1,33 @@
 function SystemInfo(){
-
+  this.clipboardContents = [];
 }
 SystemInfo.prototype.init = function(){
   SystemInfo.prototype.setMemory('free');
   SystemInfo.prototype.setMemory('total');
   SystemInfo.prototype.setUpTimes();
-  SystemInfo.prototype.setCPUs();
+  // SystemInfo.prototype.setCPUs();
   SystemInfo.prototype.setUpNetwork();
 
   SystemInfo.prototype.getSystemUsage();
 }
-SystemInfo.prototype.getSystemUsage = function(info){
+
+SystemInfo.prototype.readClipboard = function(text){
+  console.log(this.clipboardContents);
+  if(this.clipboardContents.indexOf(text) === -1){
+    console.log(text)
+    this.clipboardContents.push(text);
+    const el = document.querySelector('#cc');
+    let div = document.createElement('div');
+    div.addEventListener('click', function(e){
+        clipboard.writeText(text);
+      }
+    );
+    div.className =  "pad10 defaultMouse padTop5";
+    el.appendChild(div);
+    div.innerHTML=text;
+  }
+}
+SystemInfo.prototype.getSystemUsage = function(){
 
 
     const totalDisk = document.querySelector('totalSpace');
@@ -141,6 +158,9 @@ SystemInfo.prototype.readableMemory = function (mem){
         break;
       case "MB":
         mem.desc = "GB";
+        break;
+      case "GB":
+        mem.desc = "TB";
         break;
       default:
         break;

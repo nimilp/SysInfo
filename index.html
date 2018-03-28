@@ -16,8 +16,8 @@
           <div id="total" class="pad10"></div>
           <div class="cpuLoadTitle">Uptime</div>
           <div id="uptime" class="pad10"></div>
-          <div class="cpuLoadTitle">CPUs</div>
-          <div id="cpus" class="pad10"></div>
+          <!-- <div class="cpuLoadTitle">CPUs</div>
+          <div id="cpus" class="pad10"></div> -->
         </div>
         </div>
         <div class="systemInfo">
@@ -42,6 +42,12 @@
                   <div id="ethernet" class="pad10 defaultMouse">NA</div>
                 </div>
         </div>
+        <div class="systemInfo">
+
+                <div class="title"><b>Clipboard</b>: clicking on object, will copy it back to clipboard</div>
+                <div class="cpuLoad" id="cc">
+                </div>
+        </div>
 
     </div>
     <script>
@@ -54,13 +60,21 @@
     document.addEventListener('DOMContentLoaded',()=>{
       ipcRenderer.send('mu:dom_loaded');
       systemInfo.init();
+
     });
     setInterval(function () {
       systemInfo.setMemory('free');
-    }, 3);
+
+        // systemInfo.readClipboard(text);
+    },3000);
+    setInterval(function(){
+      let text = clipboard.readText();
+      systemInfo.readClipboard(text);
+    },3000)
 
       setInterval(function () {
         systemInfo.setUpTimes();
+        systemInfo.getSystemUsage();
       }, 86400);
     </script>
   </body>

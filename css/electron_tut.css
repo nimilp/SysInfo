@@ -13,6 +13,9 @@ body {
   margin: 10;
 
 }
+#cc {
+  overflow: auto;
+}
 .title {
   box-shadow: 3px 5px 5px rgba(0,0,0,0.75);
   padding: 5px;
@@ -34,6 +37,10 @@ body {
 }
 .pad10 {
   padding-left: 10;
+}
+
+.padTop10 {
+  padding-top:5px;
 }
 .defaultMouse {
   cursor: default;

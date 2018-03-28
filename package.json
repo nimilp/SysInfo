@@ -11,8 +11,9 @@
   "devDependencies": {
     "electron": "^1.8.2",
     "electron-packager": "^11.0.1",
-    "electron-rebuild": "^1.7.3",
-    "hdd-space": "^1.2.0"
+    "electron-rebuild": "^1.7.3"
   },
-  "dependencies": {}
+  "dependencies": {
+    "hdd-space": "^1.2.0"
+  }
 }
