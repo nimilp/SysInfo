@@ -19,6 +19,12 @@ body {
 .floatLeft {
   float: left;
 }
+.floatRight {
+  float: right;
+}
+.width98 {
+  width: 85%
+}
 .overflow {
   height: 150px;
   overflow-y: auto;
@@ -49,10 +55,26 @@ body {
 .padTop5 {
   padding-top:5px;
 }
+.clearBoth {
+  clear:both;
+}
 .cc:hover{
+  height: 20px;
   background-color: white;
   box-shadow: 2px 5px 2px rgba(100,50,25,0.5);
 }
 .defaultMouse {
   cursor: default;
+}
+.clearButton {
+  border-radius:50%;
+  background-color:red;
+  width:18px;
+  height:18px;
+  text-align:center;
+  cursor:default;
+
+}
+.clearButton:hover{
+  /* box-shadow: 1px 2px 1px rgba(0,0,0,0.75); */
 }

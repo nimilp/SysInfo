@@ -12,10 +12,10 @@ SystemInfo.prototype.init = function(){
 }
 
 SystemInfo.prototype.readClipboard = function(text){
-  console.log(this.clipboardContents);
+  let index, _self = this;;
   if(this.clipboardContents.indexOf(text) === -1){
     this.clipboardContents.push(text);
-
+    index = this.clipboardContents.length -1;
     const el = document.querySelector('#cc');
     if(this.clipboardContents.length > 10){
       this.clipboardContents.shift();
@@ -23,17 +23,35 @@ SystemInfo.prototype.readClipboard = function(text){
     }
     let div = document.createElement('div');
     let divNum = document.createElement('div');
+    let clear = document.createElement('div');
+    let clearBoth = document.createElement('div');
+    let cc = document.createElement('div');
+
+    clearBoth.className = "clearBoth";
+
     divNum.className="divNum floatLeft"
     divNum.innerHTML = '&#9679';
-    let cc = document.createElement('div');
-    // divNum.className="floatLeft";
-    // div.setAttribute('id', 'cc_'+(this.clipboardContents.length));
+    
+    clear.innerHTML = "&#x2716";
+    clear.className = "clearButton floatRight"
+    clear.addEventListener('click', function(e){
+      div.remove();
+      index = _self.clipboardContents.indexOf(text);
+      console.log(index);
+      _self.clipboardContents.splice(index,1);
+      console.log(_self.clipboardContents);
+    });
+
+    cc.className ="floatLeft";
     cc.addEventListener('click', function(e){
         clipboard.writeText(text);
       }
     );
+
     div.appendChild(divNum);
     div.appendChild(cc);
+    div.appendChild(clear);
+    div.appendChild(clearBoth);
     div.className =  "pad10 defaultMouse padTop5 cc";
 
     el.appendChild(div);
