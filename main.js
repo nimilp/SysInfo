@@ -18,22 +18,26 @@ function createWindow() {
     resizable:false,
     opacity: .75,frame:true,
     maximizable:false,
-    minimizable:true
+    minimizable:true,
+    icon: path.join(__dirname, 'assets/icons/64x64.png')
   });
   mainWindow.loadURL(url.format({
     pathname : path.join(__dirname,'index.html'),
     protocol : "file:",
     slashes : true
   }));
-// console.log(os);
-//   ipcMain.on('mu:dom_loaded', ()=>{
-//     const infoObjects = {
-//       os:os
-//     }
-//
-//     mainWindow.webContents.send('mu:data', infoObjects);
-//   })
   mainWindow.on('closed',() => mainWindow = null)
 }
 
 app.on('ready', createWindow);
+//mac specific
+app.on('activate', () =>{
+  if(mainWindow === null){
+    createWindow();
+  }
+});
+app.on('all-windows-closed',()=>{
+  if(process.platform !== 'darwin'){
+    app.quit();
+  }
+})
